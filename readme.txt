@@ -1,5 +1,5 @@
 heroku url:
-https://infinite-hamlet-19791.herokuapp.com/
+https://quiet-badlands-76552.herokuapp.com/connect/facebook
 
 heroku deploy steps:
 heroku login
