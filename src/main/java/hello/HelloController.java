@@ -20,6 +20,8 @@ public class HelloController {
 
     @Autowired
     private Facebook facebook;
+
+    @Autowired
     private ConnectionRepository connectionRepository;
 
     public HelloController(Facebook facebook, ConnectionRepository connectionRepository) {
