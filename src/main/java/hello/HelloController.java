@@ -1,5 +1,9 @@
 package hello;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HelloController {
 
+    @Autowired
     private Facebook facebook;
     private ConnectionRepository connectionRepository;
 
@@ -32,6 +37,12 @@ public class HelloController {
         PagedList<Post> feed = facebook.feedOperations().getFeed();
         model.addAttribute("feed", feed);
         return "hello";
+    }
+
+    @Bean
+    @Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
+    public Facebook facebook() {
+        return connectionRepository.getPrimaryConnection(Facebook.class).getApi();
     }
 
 }
