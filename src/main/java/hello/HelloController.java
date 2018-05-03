@@ -1,5 +1,7 @@
 package hello;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
@@ -20,6 +22,8 @@ public class HelloController {
 
     @Autowired
     private Facebook facebook;
+
+    @Inject
     private ConnectionRepository connectionRepository;
 
     public HelloController(Facebook facebook, ConnectionRepository connectionRepository) {
